@@ -38,3 +38,8 @@ O serviço ainda não tem testes automatizados.
 - [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md): camadas, dono dos dados, contrato e a direção futura (auditoria genérica)
 - [`docs/DOMAIN.md`](docs/DOMAIN.md): a hierarquia `AuditEvent`
 - [`docs/API.md`](docs/API.md): os endpoints e o contrato da fila `audit.events`
+
+## Licença
+
+Todos os direitos reservados a Jairo Williams Guedes Lopes Neto. O código é público só para consulta
+e avaliação; ver [`LICENSE`](LICENSE).
