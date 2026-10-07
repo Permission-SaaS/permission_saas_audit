@@ -2,7 +2,7 @@
 
 Endpoints do `audit-service` (porta 8081) e o contrato da mensagem que ele consome. A aplicação principal (`permission-service`) publica cada validação de permissão na [fila `audit.events`](#mensageria--fila-auditevents-rabbitmq) e repassa ao `GET` daqui, por OpenFeign, cada consulta ao [`GET /audit-events` dela](https://github.com/Permission-SaaS/permission_saas_api/blob/main/docs/API.md#get-audit-events). O `POST` foi o caminho da gravação até 03/10/2026 e continua disponível para uso direto.
 
-Os dois endpoints podem ser exercitados direto, pelo Swagger UI em `http://localhost:8081/swagger-ui/index.html` ou pela coleção Postman do [repositório guarda-chuva](https://github.com/Permission-SaaS/permission_saas) (pasta `audit-service (8081)`). O serviço não tem autenticação: é chamado pela rede interna dos serviços, não por clientes.
+Os dois endpoints podem ser exercitados direto, pelo Swagger UI em `http://localhost:8081/swagger-ui/index.html` ou pela coleção Postman do [repositório guarda-chuva](https://github.com/Permission-SaaS/permission_saas) (pasta `3. permission_saas_audit (8081)`). O serviço não tem autenticação: é chamado pela rede interna dos serviços, não por clientes.
 
 ## Formato padrão de erro
 
@@ -148,4 +148,4 @@ curl -u saas:saas123 -H "Content-Type: application/json" \
   -d '{"count":10,"ackmode":"ack_requeue_true","encoding":"auto"}'
 ```
 
-No Postman do guarda-chuva, a pasta `audit-service fora do ar` faz isso com o consumidor parado e depois de religá-lo.
+No Postman do guarda-chuva, a pasta `5. RabbitMQ` tem três subpastas: `Caminho feliz` (a validação chega à trilha e a fila esvazia), `Mensagem invalida vai para a fila de mortas` (publica um `type` desconhecido e confere a `audit.events.dlq`) e `Consumidor fora do ar (manual)`, que faz o roteiro com o consumidor parado e depois de religá-lo.
